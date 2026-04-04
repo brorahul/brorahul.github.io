@@ -51,18 +51,50 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
 // Three.js Hero Geometry Animation
 let scene, camera, renderer, heroMeshes;
 
+// Add touch device detection and mobile optimizations
+function isTouchDevice() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
+// Disable custom cursor on touch devices
+if (isTouchDevice()) {
+    const cursor = document.getElementById('cursor');
+    if (cursor) {
+        cursor.style.display = 'none';
+    }
+    document.body.style.cursor = 'auto';
+}
+
+// Update hover effects for touch
+document.addEventListener('DOMContentLoaded', () => {
+    if (!isTouchDevice()) {
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
+});
+
 function initHeroScene() {
     const container = document.getElementById('hero-3d');
     if (!container) return;
 
+    // Check if mobile and reduce complexity
+    const isMobile = window.innerWidth <= 768;
+    
     scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x050507, 0.064);
 
     camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 12);
 
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(window.devicePixelRatio || 1);
+    renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true }); // Disable antialiasing on mobile
+    renderer.setPixelRatio(isMobile ? 1 : (window.devicePixelRatio || 1)); // Lower pixel ratio on mobile
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
@@ -85,7 +117,7 @@ function initHeroScene() {
         wireframe: true
     });
 
-    const torus = new THREE.Mesh(new THREE.TorusKnotGeometry(1.4, 0.3, 120, 16), material);
+    const torus = new THREE.Mesh(new THREE.TorusKnotGeometry(1.4, 0.3, isMobile ? 80 : 120, isMobile ? 12 : 16), material);
     torus.position.set(-2.2, 1.4, -0.6);
     scene.add(torus);
     heroMeshes.push(torus);
@@ -100,12 +132,13 @@ function initHeroScene() {
     scene.add(icosa);
     heroMeshes.push(icosa);
 
+    // Reduce particles on mobile
     const particles = new THREE.Points(
         new THREE.BufferGeometry(),
-        new THREE.PointsMaterial({ color: 0xffd700, size: 0.03, transparent: true, opacity: 0.35 })
+        new THREE.PointsMaterial({ color: 0xffd700, size: isMobile ? 0.02 : 0.03, transparent: true, opacity: 0.35 })
     );
 
-    const particleCount = 180;
+    const particleCount = isMobile ? 100 : 180; // Reduced particle count on mobile
     const particlePositions = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount * 3; i += 3) {
         particlePositions[i] = (Math.random() - 0.5) * 24;
@@ -204,17 +237,6 @@ function initAnimations() {
         observer.observe(el);
     });
 }
-
-// Hover effects for project cards
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0) scale(1)';
-    });
-});
 
 // Mobile menu toggle (if needed in future)
 function toggleMenu() {
