@@ -1,4 +1,3 @@
-// Loader
 window.addEventListener('load', () => {
     setTimeout(() => {
         document.getElementById('loader').style.opacity = '0';
@@ -41,11 +40,19 @@ document.querySelectorAll('.skill-card').forEach(card => {
     observer.observe(card);
 });
 
-// Contact Form
+// Contact Form Success Handler
 document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Thank you for your message! I will get back to you soon.');
-    this.reset();
+    // Formspree handles the submission, but we can show a loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Re-enable button after a short delay (Formspree will redirect)
+    setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }, 3000);
 });
 
 // Three.js Hero Geometry Animation
