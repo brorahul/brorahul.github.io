@@ -1,1 +1,1 @@
-# rahul-tech123.github.io
+# rahulcore.github.io
