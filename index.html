@@ -1,238 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul Sharma - AI Developer Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahul Sharma — Portfolio</title>
+  <meta name="description" content="The portfolio of Rahul Sharma, an intermediate Python programmer building practical management systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .profile-orb { padding: 0; overflow: hidden; border: 2px solid var(--lime); box-shadow: 0 0 0 8px #a8ff6012; }
+    .profile-orb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .about-content { display: block; }
+    .about h2 { max-width: 700px; }
+  </style>
 </head>
 <body>
-    <div id="loader">
-        <div class="loader-content">
-            <div class="loader-logo">&lt;RS&gt;</div>
-            <div class="loading-line"></div>
-        </div>
-    </div>
+  <div class="noise"></div>
+  <header class="nav wrap">
+    <a class="brand" href="#top" aria-label="Rahul Sharma home"><span>RS</span> RAHUL SHARMA</a>
+    <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    <a id="github-nav" class="github-pill" href="https://github.com/" target="_blank" rel="noreferrer">GitHub ↗</a>
+  </header>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">&lt;RS&gt;</div>
-        </div>
-    </nav>
-
-    <section id="hero" class="hero">
-        <div class="hero-bg"></div>
-        <div id="hero-3d" class="hero-3d"></div>
-        <div class="hero-copy">
-            <div class="hero-visual">
-                <div class="hero-icon"></div>
-            </div>
-            <h1>Rahul Sharma</h1>
-            <p class="hero-subtitle">AI Developer | Future Innovator</p>
-            <p class="hero-text">A future-focused developer on a mission to build intelligent systems and next-gen technology. Passionate about AI, automation, and innovation, I’m constantly learning and creating to turn ideas into reality.</p>
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
-            </div>
-            <div class="hero-links">
-                <a href="https://github.com/rahul-tech123" target="_blank" class="hero-link">GitHub</a>
-                <a href="mailto:rs91493234@gmail.com" class="hero-link">Email</a>
-            </div>
-        </div>
+  <main id="top">
+    <section class="hero wrap">
+      <p class="eyebrow"><i></i> PYTHON PROGRAMMER · OPEN TO WORK</p>
+      <h1>Python, made<br /><em>practical.</em></h1>
+      <div class="hero-bottom">
+        <p>I’m Rahul — an intermediate Python programmer building practical management systems and useful tools.</p>
+        <a class="round-arrow" href="#work" aria-label="See my work">↓</a>
+      </div>
+      <div class="hero-orb profile-orb"><img src="profile.png" alt="Rahul Sharma" /></div>
+      <div class="terminal-card" aria-label="Python code sample"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span><code><b>python</b> manage.py<br /><span>✓</span> system ready</code></div>
     </section>
 
-    <section id="about" class="about animate-fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2>About <span>Me</span></h2>
-                <p>Building the future with AI, one line of code at a time.</p>
-            </div>
-            <div class="about-grid">
-                <div class="about-panel">
-                    <div class="about-title">Who I Am</div>
-                    <p>A future-focused developer on a mission to build intelligent systems and next-gen technology. Passionate about AI, automation, and innovation, I’m constantly learning and creating to turn ideas into reality.</p>
-                    <p>Based in India, I explore the intersection of artificial intelligence, automation, and immersive 3D experiences to deliver elegant, intelligent solutions.</p>
-                    <div class="about-stat">
-                        <span>Python</span>
-                        <span>AI/ML</span>
-                        <span>3D Animation</span>
-                    </div>
-                </div>
-                <div class="about-cards">
-                    <div class="info-card">
-                        <div class="card-icon">&lt;/&gt;</div>
-                        <div>
-                            <h3>AI Development</h3>
-                            <p>Building intelligent systems with machine learning and data-driven automation.</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">★</div>
-                        <div>
-                            <h3>Innovation</h3>
-                            <p>Creating next-gen solutions that push technological boundaries.</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">◼</div>
-                        <div>
-                            <h3>3D Animation</h3>
-                            <p>Designing immersive 3D experiences and visual technology content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section id="work" class="work wrap">
+      <div class="section-heading"><div><p class="eyebrow">SELECTED WORK</p><h2>Things I’ve <em>built.</em></h2></div><button id="open-upload" class="text-button">+ PUBLISH A PROJECT</button></div>
+      <div id="projects" class="project-grid"></div>
     </section>
 
-    <section id="projects" class="projects animate-slide-up">
-        <div class="container">
-            <div class="section-header">
-                <h2>Projects</h2>
-                <p>Featured systems and tools built for AI, automation, and management.</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-card-header">
-                        <h3>Personal Expense Tracker</h3>
-                        <span class="project-badge">Featured</span>
-                    </div>
-                    <p>A smart application to track and manage personal expenses with AI-powered insights and budget recommendations.</p>
-                    <div class="project-tags">
-                        <span>Python</span><span>Flask</span><span>SQLite</span><span>AI/ML</span>
-                    </div>
-                    <a href="https://github.com/rahul-tech123" class="project-button" target="_blank">View Code</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-card-header">
-                        <h3>Student Management System</h3>
-                        <span class="project-badge">Featured</span>
-                    </div>
-                    <p>Comprehensive system for managing student records, grades, attendance, and academic performance analytics.</p>
-                    <div class="project-tags">
-                        <span>Python</span><span>Django</span><span>PostgreSQL</span><span>React</span>
-                    </div>
-                    <a href="https://github.com/rahul-tech123" class="project-button" target="_blank">View Code</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-card-header">
-                        <h3>Bank Management System</h3>
-                        <span class="project-badge">Featured</span>
-                    </div>
-                    <p>Secure banking application with account management, transactions, and fraud detection using machine learning.</p>
-                    <div class="project-tags">
-                        <span>Python</span><span>FastAPI</span><span>MongoDB</span><span>AI/ML</span>
-                    </div>
-                    <a href="https://github.com/rahul-tech123" class="project-button" target="_blank">View Code</a>
-                </div>
-                <div class="project-card">
-                    <div class="project-card-header">
-                        <h3>Hotel Management System</h3>
-                        <span class="project-badge">Featured</span>
-                    </div>
-                    <p>End-to-end hotel management solution with booking system, inventory management, and customer analytics.</p>
-                    <div class="project-tags">
-                        <span>Python</span><span>Django</span><span>MySQL</span><span>Bootstrap</span>
-                    </div>
-                    <a href="https://github.com/rahul-tech123" class="project-button" target="_blank">View Code</a>
-                </div>
-            </div>
-        </div>
+    <section id="about" class="about">
+      <div class="wrap about-grid"><p class="eyebrow">A LITTLE ABOUT ME</p><div class="about-content"><div><h2>Learning Python,<br /><em>building systems.</em></h2><p class="about-copy">I’m Rahul Sharma, an intermediate Python programmer based in India. I enjoy building practical management systems that make everyday work simpler — including record management, dashboards, and organized workflows.</p><div class="facts"><span>BASED IN<br /><b>INDIA</b></span><span>LEVEL<br /><b>INTERMEDIATE PYTHON</b></span><span>STATUS<br /><b>OPEN TO WORK</b></span></div><div class="skill-list"><span>PYTHON</span><span>MANAGEMENT SYSTEMS</span><span>SQL</span><span>TKINTER</span><span>FILE HANDLING</span><span>PROBLEM SOLVING</span></div></div></div></div>
     </section>
 
-    <section id="skills" class="skills animate-scale-in">
-        <div class="container">
-            <div class="section-header">
-                <h2>Skills</h2>
-                <p>Professional strengths in development, AI, and immersive technology.</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Python</h3>
-                    <div class="progress-bar"><div class="progress-fill" data-width="95%"></div></div>
-                </div>
-                <div class="skill-card">
-                    <h3>AI/ML</h3>
-                    <div class="progress-bar"><div class="progress-fill" data-width="90%"></div></div>
-                </div>
-                <div class="skill-card">
-                    <h3>3D Animation</h3>
-                    <div class="progress-bar"><div class="progress-fill" data-width="85%"></div></div>
-                </div>
-                <div class="skill-card">
-                    <h3>3D Modelling</h3>
-                    <div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div>
-                </div>
-            </div>
-        </div>
+    <section id="contact" class="contact wrap">
+      <p class="eyebrow">LET’S BUILD SOMETHING</p>
+      <h2>Have a problem?<br /><em>Let’s solve it.</em></h2>
+      <div class="contact-row"><a class="email-link" href="mailto:rs91493234@gmail.com">rs91493234@gmail.com <span>↗</span></a><a id="github-contact" class="social-link" href="https://github.com/" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
+      <form id="contact-form" class="contact-form" action="https://formsubmit.co/rs91493234@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New portfolio enquiry" /><input type="hidden" name="_captcha" value="false" /><input type="hidden" name="_template" value="table" />
+        <label>Your name<input required name="name" placeholder="Jane Smith" /></label>
+        <label>Your email<input required type="email" name="email" placeholder="jane@example.com" /></label>
+        <label class="wide">What’s on your mind?<textarea required name="message" placeholder="Tell me a little about your project…"></textarea></label>
+        <button class="send-button" type="submit">SEND MESSAGE <span>→</span></button><p class="form-note">Your message will be sent directly to Rahul.</p>
+      </form>
     </section>
+  </main>
+  <footer class="wrap"><span>© 2026 RAHUL SHARMA</span><a href="#top">BACK TO TOP ↑</a></footer>
 
-    <section id="contact" class="contact animate-fade-in">
-        <div class="container">
-            <div class="section-header">
-                <h2>Get In <span>Touch</span></h2>
-                <p>Let’s collaborate on something amazing.</p>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <div class="contact-card-icon">✉️</div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>rs91493234@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon">🐙</div>
-                        <div>
-                            <h3>GitHub</h3>
-                            <p>@rahul-tech123</p>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" action="https://formspree.io/f/mwvwwvql" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <div class="footer-brand">Rahul</div>
-                <p>Building the future with AI, one line of code at a time.</p>
-            </div>
-            <div class="footer-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://github.com/rahul-tech123" target="_blank">GitHub</a>
-                <a href="mailto:rs91493234@gmail.com">Email</a>
-            </div>
-        </div>
-    </footer>
-
-    <div class="particles" id="particles"></div>
-
-    <div id="cursor"></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
+  <dialog id="upload-dialog">
+    <form id="project-form" method="dialog">
+      <button class="close" type="button" aria-label="Close">×</button>
+      <p id="dialog-kicker" class="eyebrow">NEW PROJECT</p><h2 id="dialog-title">Publish your <em>work.</em></h2>
+      <label>Project title<input required name="title" placeholder="Project name" /></label>
+      <label>Category<input required name="category" placeholder="e.g. Student management system" /></label>
+      <label>Short description <small>(optional)</small><textarea name="description" placeholder="What did you build and why does it matter?"></textarea></label>
+      <label>Project URL <small>(optional)</small><input name="url" type="url" placeholder="https://" /></label>
+      <label>Cover image <small>(optional)</small><input id="image-input" name="image" type="file" accept="image/*" /></label>
+      <div class="dialog-actions"><button id="delete-project" class="delete-button" type="button" hidden>DELETE</button><button id="publish-button" class="send-button" type="submit">PUBLISH PROJECT <span>→</span></button></div>
+    </form>
+  </dialog>
+  <script src="script.js"></script>
 </body>
 </html>
