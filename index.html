@@ -14,6 +14,37 @@
     .profile-orb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .about-content { display: block; }
     .about h2 { max-width: 700px; }
+    .save-status { margin: 30px 0 0; font: 10px var(--mono); color: var(--muted); letter-spacing: .04em; }
+    .save-status.ready { color: var(--lime); }
+    .save-status.warning { color: var(--coral); }
+    .social-links, footer div { display: flex; align-items: center; gap: 22px; }
+    .nav-actions { display: flex; align-items: center; gap: 13px; }
+    .admin-trigger { border: 0; background: transparent; padding: 0; color: var(--muted); font: 10px var(--mono); letter-spacing: .08em; cursor: pointer; }
+    .admin-copy { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    footer div a { white-space: nowrap; }
+    @media (max-width: 980px) {
+      .hero { min-height: 610px; }
+      .terminal-card { right: 6%; bottom: 48px; }
+      .hero-orb { right: 5%; }
+      .about-grid { grid-template-columns: 22% 1fr; }
+    }
+    @media (max-width: 700px) {
+      .social-links { flex-wrap: wrap; gap: 11px 16px; justify-content: flex-start; }
+      .admin-trigger { font-size: 9px; }
+      .contact-row { flex-direction: column; }
+      .email-link { overflow-wrap: anywhere; }
+      footer { height: auto; min-height: 90px; padding-top: 18px; padding-bottom: 18px; gap: 15px; align-items: flex-start; }
+      footer div { flex-wrap: wrap; gap: 12px 15px; justify-content: flex-end; }
+    }
+    @media (max-width: 390px) {
+      .hero { min-height: 620px; }
+      .hero h1 { font-size: 50px; }
+      .terminal-card { width: calc(100% - 40px); font-size: 9px; }
+      .facts { grid-template-columns: 1fr; }
+      .profile-orb { width: 88px; height: 88px; }
+      footer { flex-direction: column; }
+      footer div { justify-content: flex-start; }
+    }
   </style>
 </head>
 <body>
@@ -21,7 +52,7 @@
   <header class="nav wrap">
     <a class="brand" href="#top" aria-label="Rahul Sharma home"><span>RS</span> RAHUL SHARMA</a>
     <nav aria-label="Main navigation"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-    <a id="github-nav" class="github-pill" href="https://github.com/rahul-core" target="_blank" rel="noreferrer">GitHub ↗</a>
+    <div class="nav-actions"><button id="admin-trigger" class="admin-trigger" type="button">ADMIN LOGIN</button><a id="github-nav" class="github-pill" href="https://github.com/rahul-core" target="_blank" rel="noreferrer">GitHub ↗</a></div>
   </header>
 
   <main id="top">
@@ -37,8 +68,9 @@
     </section>
 
     <section id="work" class="work wrap">
-      <div class="section-heading"><div><p class="eyebrow">SELECTED WORK</p><h2>Things I’ve <em>built.</em></h2></div><button id="open-upload" class="text-button">+ PUBLISH A PROJECT</button></div>
+      <div class="section-heading"><div><p class="eyebrow">SELECTED WORK</p><h2>Things I’ve <em>built.</em></h2></div><button id="open-upload" class="text-button admin-only" type="button" hidden>+ PUBLISH A PROJECT</button></div>
       <div id="projects" class="project-grid"></div>
+      <p id="save-status" class="save-status admin-only" role="status" hidden></p>
     </section>
 
     <section id="about" class="about">
@@ -48,7 +80,7 @@
     <section id="contact" class="contact wrap">
       <p class="eyebrow">LET’S BUILD SOMETHING</p>
       <h2>Have a problem?<br /><em>Let’s solve it.</em></h2>
-      <div class="contact-row"><a class="email-link" href="mailto:rs91493234@gmail.com">rs91493234@gmail.com <span>↗</span></a><a id="github-contact" class="social-link" href="https://github.com/" target="_blank" rel="noreferrer">GITHUB ↗</a></div>
+      <div class="contact-row"><a class="email-link" href="mailto:rs91493234@gmail.com">rs91493234@gmail.com <span>↗</span></a><div class="social-links"><a id="github-contact" class="social-link" href="https://github.com/rahul-core" target="_blank" rel="noreferrer">GITHUB ↗</a><a class="social-link" href="https://www.linkedin.com/in/rahul-sharma-py-dev" target="_blank" rel="noreferrer">LINKEDIN ↗</a></div></div>
       <form id="contact-form" class="contact-form" action="https://formsubmit.co/rs91493234@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New portfolio enquiry" /><input type="hidden" name="_captcha" value="false" /><input type="hidden" name="_template" value="table" />
         <label>Your name<input required name="name" placeholder="Jane Smith" /></label>
@@ -58,7 +90,7 @@
       </form>
     </section>
   </main>
-  <footer class="wrap"><span>© 2026 RAHUL SHARMA</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <footer class="wrap"><span>© 2026 RAHUL SHARMA</span><div><a href="https://github.com/rahul-core" target="_blank" rel="noreferrer">GITHUB ↗</a><a href="https://www.linkedin.com/in/rahul-sharma-py-dev" target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href="#top">BACK TO TOP ↑</a></div></footer>
 
   <dialog id="upload-dialog">
     <form id="project-form" method="dialog">
@@ -72,6 +104,16 @@
       <div class="dialog-actions"><button id="delete-project" class="delete-button" type="button" hidden>DELETE</button><button id="publish-button" class="send-button" type="submit">PUBLISH PROJECT <span>→</span></button></div>
     </form>
   </dialog>
+  <dialog id="admin-dialog">
+    <form id="admin-form" method="dialog">
+      <button class="close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow">PRIVATE ACCESS</p><h2>Manage your<br /><em>portfolio.</em></h2>
+      <p class="admin-copy">We’ll send a secure sign-in link to your portfolio email.</p>
+      <button class="send-button" type="submit">SEND LOGIN LINK <span>→</span></button>
+      <p id="admin-status" class="save-status" role="status"></p>
+    </form>
+  </dialog>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
 </body>
 </html>
